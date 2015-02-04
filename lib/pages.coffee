@@ -474,7 +474,8 @@
   # "sub" is the publish handler object which (the "this" object when the function passed to Meteor.publish is called)
   
   publish: (page, sub) ->
-    check page, Number
+    console.log "page.publish: ", this, page, sub
+    check page, Number if page?
     check sub, Match.Where (s) ->
       s.ready?
     cid = sub.connection.id
